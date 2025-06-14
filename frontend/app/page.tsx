@@ -69,7 +69,7 @@ export default function Home() {
   };
 
   return (
-    <main className="p-6 max-w-2xl mx-auto">
+    <main className="p-6 max-w-7xl mx-auto">
       <h1 className="text-2xl font-bold mb-4">Parcel2Go Quote & Label Generator</h1>
 
       {loading && <p className="mb-4">Loading...</p>}
