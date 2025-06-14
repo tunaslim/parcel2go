@@ -60,10 +60,12 @@ export default function Home() {
       const response = await axios.post(`${apiBase}/create-label`, { labelData });
       setLabel(response.data);
       setLoading(false);
-    } catch (err) {
-      setError('Failed to create label.');
-      setLoading(false);
-    }
+} catch (err) {
+  console.error('Error fetching quotes:', err);
+  setError(err.response?.data?.message || err.message || 'Failed to get quotes.');
+  setQuotes([]);
+  setLoading(false);
+}
   };
 
   return (
@@ -72,7 +74,9 @@ export default function Home() {
 
       {loading && <p className="mb-4">Loading...</p>}
 
-      {error && <p className="mb-4 text-red-500">{error}</p>}
+      {error && <p className="mb-4 text-red-500">Error: {error}</p>}
+
+      {successMessage && <p className="mb-4 text-green-500">{successMessage}</p>}
 
       {(!quotes || quotes.length === 0) && (
         <div className="space-y-4 mb-6">
