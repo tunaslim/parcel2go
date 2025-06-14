@@ -19,7 +19,7 @@ export default function Home() {
   const [label, setLabel] = useState(null);
   const [error, setError] = useState('');
 
-  const apiBase = 'https://goodlife-production-3a0a.up.railway.app';
+  const apiBase = 'https://parcel2go-api.up.railway.app';
 
   const getQuotes = async () => {
     try {
