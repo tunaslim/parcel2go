@@ -220,38 +220,55 @@ export default function Home() {
         </div>
       )}
 
-      {quotes?.length > 0 && !label && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {quotes
-            .slice()
-            .sort((a, b) => a.TotalPrice - b.TotalPrice)
-            .map((quote, index) => {
-              const service = quote.Service;
-              return (
-                <div key={index} className="border p-4 flex flex-col justify-between h-full">
-                  <div className="flex items-center space-x-4">
-                    <img src={service.Links.ImageSmall} alt={service.Name} className="w-16 h-16 object-contain" />
-                    <div>
-                      <p className="font-bold">{service.CourierName} - {service.Name}</p>
-                      <p>Price (excl. VAT): £{quote.TotalPriceExVat.toFixed(2)}</p>
-                      <p className="font-bold text-green-600">Total Price: £{quote.TotalPrice.toFixed(2)}</p>
-                      <p className="text-gray-600 text-sm mt-2">Estimated Delivery: {new Date(quote.EstimatedDeliveryDate).toLocaleDateString()}</p>
-                    </div>
-                  </div>
+{quotes?.length > 0 && !label && (
+  <div className="overflow-x-auto">
+    <table className="min-w-full table-auto border-collapse border border-gray-300">
+      <thead>
+        <tr className="bg-gray-200">
+          <th className="border border-gray-300 p-2 text-left">Courier</th>
+          <th className="border border-gray-300 p-2 text-left">Service</th>
+          <th className="border border-gray-300 p-2 text-left">Price (excl. VAT)</th>
+          <th className="border border-gray-300 p-2 text-left">Total Price</th>
+          <th className="border border-gray-300 p-2 text-left">Estimated Delivery</th>
+          <th className="border border-gray-300 p-2 text-left">Select</th>
+        </tr>
+      </thead>
+      <tbody>
+        {quotes
+          .slice()
+          .sort((a, b) => a.TotalPrice - b.TotalPrice)
+          .map((quote, index) => {
+            const service = quote.Service;
+            return (
+              <tr key={index} className="hover:bg-gray-100">
+                <td className="border border-gray-300 p-2 flex items-center space-x-2">
+                  <img src={service.Links.ImageSmall} alt={service.Name} className="w-12 h-12 object-contain" />
+                  <span>{service.CourierName}</span>
+                </td>
+                <td className="border border-gray-300 p-2">{service.Name}</td>
+                <td className="border border-gray-300 p-2">£{quote.TotalPriceExVat.toFixed(2)}</td>
+                <td className="border border-gray-300 p-2 font-bold text-green-600">£{quote.TotalPrice.toFixed(2)}</td>
+                <td className="border border-gray-300 p-2">
+                  {new Date(quote.EstimatedDeliveryDate).toLocaleDateString()}
+                </td>
+                <td className="border border-gray-300 p-2">
                   <button
                     onClick={() => {
                       setSelectedService(quote);
                       createLabel();
                     }}
-                    className="bg-green-500 text-white px-4 py-2 rounded mt-4"
+                    className="bg-green-500 text-white px-3 py-1 rounded"
                   >
                     Select
                   </button>
-                </div>
-              );
-            })}
-        </div>
-      )}
+                </td>
+              </tr>
+            );
+          })}
+      </tbody>
+    </table>
+  </div>
+)}
 
       {label && (
         <div>
