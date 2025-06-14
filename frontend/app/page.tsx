@@ -60,12 +60,12 @@ export default function Home() {
       const response = await axios.post(`${apiBase}/create-label`, { labelData });
       setLabel(response.data);
       setLoading(false);
-} catch (err) {
-  console.error('Error fetching quotes:', err);
-  setError(err.response?.data?.message || err.message || 'Failed to get quotes.');
-  setQuotes([]);
-  setLoading(false);
-}
+    } catch (err) {
+      console.error('Error fetching quotes:', err);
+      setError(err.response?.data?.message || err.message || 'Failed to get quotes.');
+      setQuotes([]);
+      setLoading(false);
+    }
   };
 
   return (
@@ -220,24 +220,15 @@ export default function Home() {
         </div>
       )}
 
-{quotes?.length > 0 && !label && (
-  <table className="w-full border-collapse">
-  <tbody>
-    {quotes
-      .slice()
-      .sort((a, b) => a.TotalPrice - b.TotalPrice)
-      .reduce((rows, quote, index) => {
-        if (index % 3 === 0) rows.push([]);
-        rows[rows.length - 1].push(quote);
-        return rows;
-      }, [])
-      .map((row, rowIndex) => (
-        <tr key={rowIndex}>
-          {row.map((quote, colIndex) => {
-            const service = quote.Service;
-            return (
-              <td key={colIndex} className="border p-4 align-top">
-                <div className="flex flex-col justify-between h-full">
+      {quotes?.length > 0 && !label && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {quotes
+            .slice()
+            .sort((a, b) => a.TotalPrice - b.TotalPrice)
+            .map((quote, index) => {
+              const service = quote.Service;
+              return (
+                <div key={index} className="border p-4 flex flex-col justify-between h-full">
                   <div className="flex items-center space-x-4">
                     <img src={service.Links.ImageSmall} alt={service.Name} className="w-16 h-16 object-contain" />
                     <div>
@@ -257,14 +248,10 @@ export default function Home() {
                     Select
                   </button>
                 </div>
-              </td>
-            );
-          })}
-        </tr>
-      ))}
-  </tbody>
-</table>
-)}
+              );
+            })}
+        </div>
+      )}
 
       {label && (
         <div>
