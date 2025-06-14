@@ -76,8 +76,6 @@ export default function Home() {
 
       {error && <p className="mb-4 text-red-500">Error: {error}</p>}
 
-      {successMessage && <p className="mb-4 text-green-500">{successMessage}</p>}
-
       {(!quotes || quotes.length === 0) && (
         <div className="space-y-4 mb-6">
           <h2 className="text-xl font-semibold">Order Details</h2>
