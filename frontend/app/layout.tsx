@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
         <header className="mb-6 border-b pb-4">
           <h1 className="text-3xl font-bold text-center">Parcel2Go Integration</h1>
         </header>
-        <main className="max-w-4xl mx-auto">{children}</main>
+        <main className="p-6 w-full mx-auto">{children}</main>
       </body>
     </html>
   );
