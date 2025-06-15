@@ -225,12 +225,13 @@ export default function Home() {
     <table className="min-w-full table-auto border-collapse border border-gray-300">
       <thead>
         <tr className="bg-gray-200">
+          <th className="border border-gray-300 p-2 text-left"></th>
           <th className="border border-gray-300 p-2 text-left">Courier</th>
           <th className="border border-gray-300 p-2 text-left">Service</th>
           <th className="border border-gray-300 p-2 text-left">Price (excl. VAT)</th>
           <th className="border border-gray-300 p-2 text-left">Total Price</th>
-          <th className="border border-gray-300 p-2 text-left">Estimated Delivery</th>
-          <th className="border border-gray-300 p-2 text-left">Select</th>
+          <th className="border border-gray-300 p-2 text-left">Est. Delivery</th>
+          <th className="border border-gray-300 p-2 text-left"></th>
         </tr>
       </thead>
       <tbody>
