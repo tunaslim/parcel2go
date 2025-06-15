@@ -242,17 +242,17 @@ export default function Home() {
             const service = quote.Service;
             return (
               <tr key={index} className="hover:bg-gray-100">
-                <td className="border border-gray-300 p-2 flex items-center space-x-2">
+                <td style="text-align: center; vertical-align: middle;">
                   <img src={service.Links.ImageSmall} alt={service.Name} className="w-12 h-12 object-contain" />
                 </td>
-                <td className="border border-gray-300 p-2">{service.CourierName}</td>
-                <td className="border border-gray-300 p-2">{service.Name}</td>
-                <td className="border border-gray-300 p-2">£{quote.TotalPriceExVat.toFixed(2)}</td>
-                <td className="border border-gray-300 p-2 font-bold text-green-600">£{quote.TotalPrice.toFixed(2)}</td>
-                <td className="border border-gray-300 p-2">
+                <td style="text-align: center; vertical-align: middle;">{service.CourierName}</td>
+                <td style="text-align: center; vertical-align: middle;">{service.Name}</td>
+                <td style="text-align: center; vertical-align: middle;">£{quote.TotalPriceExVat.toFixed(2)}</td>
+                <td style="text-align: center; vertical-align: middle;">£{quote.TotalPrice.toFixed(2)}</td>
+                <td style="text-align: center; vertical-align: middle;">
                   {new Date(quote.EstimatedDeliveryDate).toLocaleDateString()}
                 </td>
-                <td className="border border-gray-300 p-2">
+                <td style="text-align: center; vertical-align: middle;">
                   <button
                     onClick={() => {
                       setSelectedService(quote);
