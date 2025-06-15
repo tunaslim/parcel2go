@@ -41,16 +41,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `,
           }}
         />
-      <style>
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-tr {
-  border-bottom: 1px solid #ddd;
-}
-</style>
       </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans p-6 bg-gray-50 min-h-screen`}>
         <header className="mb-6 border-b pb-4">
